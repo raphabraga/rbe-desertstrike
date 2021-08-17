@@ -56,7 +56,7 @@ body {
   position: absolute;
   left: 8px;
   top: 179px;
-  background-image: url("../img/apache.png");
+  background-image: url("../img/chopper.png");
 }
 
 #enemy1 {
@@ -84,4 +84,110 @@ body {
   left: 10px;
   top: 464px;
   background-image: url("../img/ally.png");
+}
+
+.chopper-animated {
+  animation: propeller-move 0.5s steps(2) infinite;
+  -webkit-animation: propeller-move 0.5s steps(2) infinite;
+  -moz-animation: propeller-move 0.5s steps(2) infinite;
+  -ms-animation: propeller-move 0.5s steps(2) infinite;
+  -o-animation: propeller-move 0.5s steps(2) infinite;
+}
+
+@keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+@-moz-keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+@-webkit-keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+@-ms-keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+@-o-keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+.ally-animated {
+  animation: walking 0.9s steps(12) infinite;
+  -webkit-animation: walking 0.9s steps(12) infinite;
+  -moz-animation: walking 0.9s steps(12) infinite;
+  -ms-animation: walking 0.9s steps(12) infinite;
+  -o-animation: walking 0.9s steps(12) infinite;
+}
+
+@keyframes walking {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
+
+@-moz-keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
+
+@-webkit-keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
+
+@-ms-keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
+
+@-o-keyframes propeller-move {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
 }
