@@ -13,14 +13,14 @@ body {
   background: url("../img/page_bg.jpg");
 }
 
-.container {
+#container {
   width: 950px;
   height: auto;
   position: relative;
   margin: 100px auto;
 }
 
-.game-bg {
+#game-bg {
   width: 950px;
   height: 630px;
   background: url("../img/game_bg.jpg");
@@ -28,7 +28,7 @@ body {
   border-style: solid;
 }
 
-.game-instructions {
+#game-instructions {
   width: 350px;
   height: 200;
   background-color: #fff;
@@ -41,11 +41,47 @@ body {
   box-shadow: 20px 0px 30px rgba(0, 0, 0, 0.5);
 }
 
-.game-instructions:hover {
+#game-instructions:hover {
   background-color: #ccc;
 }
 
-.game-instructions:active {
+#game-instructions:active {
   transform: translate(2px, 0px);
   box-shadow: 15px 0px 20px rgba(0, 0, 0, 0.11);
+}
+
+#player {
+  width: 256px;
+  height: 66px;
+  position: absolute;
+  left: 8px;
+  top: 179px;
+  background-image: url("../img/apache.png");
+}
+
+#enemy1 {
+  width: 256px;
+  height: 66px;
+  position: absolute;
+  left: 689px;
+  top: 253px;
+  background-image: url("../img/enemy_1.png");
+}
+
+#enemy2 {
+  width: 165px;
+  height: 70px;
+  position: absolute;
+  left: 775px;
+  top: 447px;
+  background-image: url("../img/enemy_2.png");
+}
+
+#ally {
+  width: 44px;
+  height: 51px;
+  position: absolute;
+  left: 10px;
+  top: 464px;
+  background-image: url("../img/ally.png");
 }

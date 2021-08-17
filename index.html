@@ -7,17 +7,20 @@
     <link rel="stylesheet" href="./css/style.css" />
     <title>rbe Desert Strike</title>
   </head>
-  <div class="container">
-    <div class="game-bg">
-      <div class="game-instructions">
-        <h1>Desert Strike</h1>
-        <p>
-          Use "W" key to move the chopper up, "S" key to move the chopper down
-          and "S" key to shoot.
-        </p>
-        <p>Click here to start the game!</p>
+  <body>
+    <div id="container">
+      <div id="game-bg">
+        <div id="game-instructions" onclick="start()">
+          <h1>Desert Strike</h1>
+          <p>
+            Use "W" key to move the chopper up, "S" key to move the chopper down
+            and "S" key to shoot.
+          </p>
+          <p>Click here to start the game!</p>
+        </div>
       </div>
     </div>
-  </div>
-  <body></body>
+    <script src="./js/index.js" type="text/javascript"></script>
+    <script src="./js/jquery-1.11.1.min.js" type="text/javascript"></script>
+  </body>
 </html>
