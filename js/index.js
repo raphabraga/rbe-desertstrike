@@ -110,6 +110,7 @@ function start() {
     }
 
     if (collision3.length > 0) {
+      enemy1Speed += 0.3;
       totalScore += 100;
       explosion3Y = $("#enemy1").css("top");
       explosion3X = $("#enemy1").css("left");
