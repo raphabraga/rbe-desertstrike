@@ -136,6 +136,9 @@ function start() {
     }
 
     if (collision6.length > 0) {
+      deathAllyY = $("#ally").css("top");
+      deathAllyX = $("#ally").css("left");
+      deathAlly(deathAllyX, deathAllyY);
       $("#ally").remove();
       setTimeout(() => {
         if (!gameOver)
@@ -151,6 +154,13 @@ function start() {
     $(`#${el}`).css("background-image", "url('../img/explosion.png')");
     $(`#${el}`).animate({ width: 200, opacity: 0 }, "slow");
     setTimeout(() => $(`#${el}`).remove(), 1000);
+  };
+
+  const deathAlly = (x, y) => {
+    $("#game-bg").append(`<div id='death-ally' class='death-animated'></div>`);
+    $("#death-ally").css("top", y);
+    $("#death-ally").css("left", x);
+    setTimeout(() => $("#death-ally").remove(), 1000);
   };
 
   const loop = () => {

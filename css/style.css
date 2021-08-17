@@ -99,6 +99,12 @@ body {
   position: absolute;
 }
 
+#death-ally {
+  width: 44px;
+  height: 51px;
+  position: absolute;
+}
+
 .chopper-animated {
   animation: propeller-move 0.5s steps(2) infinite;
   -webkit-animation: propeller-move 0.5s steps(2) infinite;
@@ -202,5 +208,58 @@ body {
   }
   to {
     background-position: -528px;
+  }
+}
+
+.death-animated {
+  width: 44px;
+  height: 51px;
+  background-image: url("../img/ally_death.png");
+  animation: death 0.5s steps(7) infinite;
+  -webkit-animation: death 0.5s steps(7) infinite;
+  -moz-animation: death 0.5s steps(7) infinite;
+  -o-animation: death 0.5s steps(7) infinite;
+  -ms-animation: death 0.5s steps(7) infinite;
+}
+
+@keyframes death {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -308px;
+  }
+}
+
+@-webkit-keyframes death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
+  }
+}
+@-moz-keyframes death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
+  }
+}
+@-o-keyframes death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
+  }
+}
+@-ms-keyframes death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
   }
 }
