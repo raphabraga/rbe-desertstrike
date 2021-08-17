@@ -58,6 +58,14 @@ body {
   top: 590px;
 }
 
+#player-energy {
+  width: 140px;
+  height: 38px;
+  position: absolute;
+  left: 750px;
+  top: 7px;
+}
+
 h2 {
   font-family: game-font;
   font-size: 20px;

@@ -90,6 +90,7 @@ function start() {
     var collision6 = $("#enemy2").collision($("#ally"));
 
     if (collision1.length > 0) {
+      playerEnergy--;
       explosion1Y = $("#enemy1").css("top");
       explosion1X = $("#enemy1").css("left");
       $("#enemy1").css("top", parseInt(Math.random() * 334));
@@ -98,6 +99,7 @@ function start() {
     }
 
     if (collision2.length > 0) {
+      playerEnergy--;
       explosion2Y = $("#enemy2").css("top");
       explosion2X = $("#enemy2").css("left");
       explosion("explosion", explosion2X, explosion2Y);
@@ -173,8 +175,17 @@ function start() {
     );
   };
 
+  const energy = () => {
+    if (playerEnergy === 0) gameOver();
+    $("#player-energy").css(
+      "background-image",
+      `url('../img/energy_${playerEnergy}.png')`
+    );
+  };
+
   const loop = () => {
     score();
+    energy();
     backgroundMoviment();
     moveEnemy1();
     moveEnemy2();
@@ -189,9 +200,11 @@ function start() {
   $("#game-bg").append("<div id='enemy2'></div>");
   $("#game-bg").append("<div id='ally' class='ally-animated'></div>");
   $("#game-bg").append("<div id='scoreboard'></div>");
+  $("#game-bg").append("<div id='player-energy'></div>");
 
   window.addEventListener("keydown", (event) => movePlayer(event.key));
   var game = {};
+  var playerEnergy = 3;
   var totalScore = 0;
   var allySaved = 0;
   var allyLost = 0;
