@@ -45,14 +45,34 @@ function start() {
     }
   };
 
+  const moveEnemy2 = () => {
+    let enemy2Distance = parseInt($("#enemy2").css("left"));
+    $("#enemy2").css("left", enemy2Distance - enemy2Speed);
+    if (enemy2Distance < 0) {
+      $("#enemy2").css("left", 775);
+    }
+  };
+
+  const moveAlly = () => {
+    let allyDistance = parseInt($("#ally").css("left"));
+    $("#ally").css("left", allyDistance + allySpeed);
+    if (allyDistance > 906) {
+      $("#ally").css("left", 0);
+    }
+  };
+
   const loop = () => {
     backgroundMoviment();
     moveEnemy1();
+    moveEnemy2();
+    moveAlly();
   };
 
   window.addEventListener("keydown", (event) => movePlayer(event.key));
   var game = {};
   var enemy1Speed = 5;
   var enemy1Height = Math.random() * 334;
+  var enemy2Speed = 3;
+  var allySpeed = 1;
   game.timer = setInterval(loop, 30);
 }
