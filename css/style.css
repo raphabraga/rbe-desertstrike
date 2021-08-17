@@ -93,6 +93,12 @@ body {
   background-image: url("../img/shoot.png");
 }
 
+#explosion {
+  width: 15px;
+  height: 87px;
+  position: absolute;
+}
+
 .chopper-animated {
   animation: propeller-move 0.5s steps(2) infinite;
   -webkit-animation: propeller-move 0.5s steps(2) infinite;

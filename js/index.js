@@ -47,7 +47,6 @@ function start() {
   const moveEnemy1 = () => {
     let enemy1Distance = parseInt($("#enemy1").css("left"));
     $("#enemy1").css("left", enemy1Distance - enemy1Speed);
-    $("#enemy1").css("top", enemy1Height);
     if (enemy1Distance < 0) {
       enemy1Height = Math.random() * 334;
       $("#enemy1").css("top", enemy1Height);
@@ -82,12 +81,85 @@ function start() {
     }
   };
 
+  const collision = () => {
+    var collision1 = $("#player").collision($("#enemy1"));
+    var collision2 = $("#player").collision($("#enemy2"));
+    var collision3 = $("#shoot").collision($("#enemy1"));
+    var collision4 = $("#shoot").collision($("#enemy2"));
+    var collision5 = $("#player").collision($("#ally"));
+    var collision6 = $("#enemy2").collision($("#ally"));
+
+    if (collision1.length > 0) {
+      explosion1Y = $("#enemy1").css("top");
+      explosion1X = $("#enemy1").css("left");
+      $("#enemy1").css("top", parseInt(Math.random() * 334));
+      $("#enemy1").css("left", 694);
+      explosion("explosion", explosion1X, explosion1Y);
+    }
+
+    if (collision2.length > 0) {
+      explosion2Y = $("#enemy2").css("top");
+      explosion2X = $("#enemy2").css("left");
+      explosion("explosion", explosion2X, explosion2Y);
+      $("#enemy2").remove();
+      setTimeout(() => {
+        if (!gameOver) $("#game-bg").append("<div id='enemy2'></div>");
+      }, 5000);
+    }
+
+    if (collision3.length > 0) {
+      explosion3Y = $("#enemy1").css("top");
+      explosion3X = $("#enemy1").css("left");
+      $("#shoot").remove();
+      canShoot = true;
+      $("#enemy1").css("top", parseInt(Math.random() * 334));
+      $("#enemy1").css("left", 694);
+      explosion("explosion", explosion3X, explosion3Y);
+    }
+
+    if (collision4.length > 0) {
+      explosion4Y = $("#enemy2").css("top");
+      explosion4X = $("#enemy2").css("left");
+      explosion("explosion", explosion4X, explosion4Y);
+      $("#enemy2").remove();
+      setTimeout(() => {
+        if (!gameOver) $("#game-bg").append("<div id='enemy2'></div>");
+      }, 5000);
+    }
+
+    if (collision5.length > 0) {
+      $("#ally").remove();
+      setTimeout(() => {
+        if (!gameOver)
+          $("#game-bg").append("<div id='ally' class='ally-animated'></div>");
+      }, 6000);
+    }
+
+    if (collision6.length > 0) {
+      $("#ally").remove();
+      setTimeout(() => {
+        if (!gameOver)
+          $("#game-bg").append("<div id='ally' class='ally-animated'></div>");
+      }, 6000);
+    }
+  };
+
+  const explosion = (el, x, y) => {
+    $("#game-bg").append(`<div id='${el}'></div>`);
+    $(`#${el}`).css("top", y);
+    $(`#${el}`).css("left", x);
+    $(`#${el}`).css("background-image", "url('../img/explosion.png')");
+    $(`#${el}`).animate({ width: 200, opacity: 0 }, "slow");
+    setTimeout(() => $(`#${el}`).remove(), 1000);
+  };
+
   const loop = () => {
     backgroundMoviment();
     moveEnemy1();
     moveEnemy2();
     moveAlly();
     moveBullet();
+    collision();
   };
 
   $("#game-instructions").hide();
@@ -98,6 +170,7 @@ function start() {
 
   window.addEventListener("keydown", (event) => movePlayer(event.key));
   var game = {};
+  var gameOver = false;
   var enemy1Speed = 5;
   var enemy1Height = Math.random() * 334;
   var enemy2Speed = 3;
