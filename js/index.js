@@ -108,6 +108,7 @@ function start() {
     }
 
     if (collision3.length > 0) {
+      totalScore += 100;
       explosion3Y = $("#enemy1").css("top");
       explosion3X = $("#enemy1").css("left");
       $("#shoot").remove();
@@ -118,6 +119,7 @@ function start() {
     }
 
     if (collision4.length > 0) {
+      totalScore += 50;
       explosion4Y = $("#enemy2").css("top");
       explosion4X = $("#enemy2").css("left");
       explosion("explosion", explosion4X, explosion4Y);
@@ -128,6 +130,7 @@ function start() {
     }
 
     if (collision5.length > 0) {
+      allySaved++;
       $("#ally").remove();
       setTimeout(() => {
         if (!gameOver)
@@ -136,6 +139,7 @@ function start() {
     }
 
     if (collision6.length > 0) {
+      allyLost++;
       deathAllyY = $("#ally").css("top");
       deathAllyX = $("#ally").css("left");
       deathAlly(deathAllyX, deathAllyY);
@@ -163,7 +167,14 @@ function start() {
     setTimeout(() => $("#death-ally").remove(), 1000);
   };
 
+  const score = () => {
+    $("#scoreboard").html(
+      `<h2>Score: ${totalScore} Saved: ${allySaved} Lost: ${allyLost} </h2>`
+    );
+  };
+
   const loop = () => {
+    score();
     backgroundMoviment();
     moveEnemy1();
     moveEnemy2();
@@ -177,9 +188,13 @@ function start() {
   $("#game-bg").append("<div id='enemy1' class='chopper-animated'</div>");
   $("#game-bg").append("<div id='enemy2'></div>");
   $("#game-bg").append("<div id='ally' class='ally-animated'></div>");
+  $("#game-bg").append("<div id='scoreboard'></div>");
 
   window.addEventListener("keydown", (event) => movePlayer(event.key));
   var game = {};
+  var totalScore = 0;
+  var allySaved = 0;
+  var allyLost = 0;
   var gameOver = false;
   var enemy1Speed = 5;
   var enemy1Height = Math.random() * 334;

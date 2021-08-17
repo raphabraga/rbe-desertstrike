@@ -50,6 +50,20 @@ body {
   box-shadow: 15px 0px 20px rgba(0, 0, 0, 0.11);
 }
 
+#scoreboard {
+  width: 450px;
+  height: 50px;
+  position: absolute;
+  left: 5px;
+  top: 590px;
+}
+
+h2 {
+  font-family: game-font;
+  font-size: 20px;
+  color: #fff;
+}
+
 #player {
   width: 256px;
   height: 66px;
