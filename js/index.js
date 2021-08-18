@@ -108,7 +108,7 @@ function start() {
       explosion("explosion", explosion2X, explosion2Y);
       $("#enemy2").remove();
       setTimeout(() => {
-        if (!gameOver) $("#game-bg").append("<div id='enemy2'></div>");
+        if (!isGameOver) $("#game-bg").append("<div id='enemy2'></div>");
       }, 5000);
     }
 
@@ -133,7 +133,7 @@ function start() {
       explosion("explosion", explosion4X, explosion4Y);
       $("#enemy2").remove();
       setTimeout(() => {
-        if (!gameOver) $("#game-bg").append("<div id='enemy2'></div>");
+        if (!isGameOver) $("#game-bg").append("<div id='enemy2'></div>");
       }, 5000);
     }
 
@@ -142,7 +142,7 @@ function start() {
       allySaved++;
       $("#ally").remove();
       setTimeout(() => {
-        if (!gameOver)
+        if (!isGameOver)
           $("#game-bg").append("<div id='ally' class='ally-animated'></div>");
       }, 6000);
     }
@@ -155,7 +155,7 @@ function start() {
       deathAlly(deathAllyX, deathAllyY);
       $("#ally").remove();
       setTimeout(() => {
-        if (!gameOver)
+        if (!isGameOver)
           $("#game-bg").append("<div id='ally' class='ally-animated'></div>");
       }, 6000);
     }
@@ -191,6 +191,24 @@ function start() {
     );
   };
 
+  const gameOver = () => {
+    isGameOver = true;
+    bgSound.pause();
+    gameoverSound.play();
+
+    window.clearInterval(game.timer);
+    game.timer = null;
+    $("#player").remove();
+    $("#enemy1").remove();
+    $("#enemy2").remove();
+    $("#ally").remove();
+
+    $("#game-bg").append("<div id='end'></div>");
+    $("#end").html(
+      `<h1> Game Over</h1> <p>Your score: ${totalScore}</p> <p>Rescued Allies: ${allySaved}</p> <p>Lost Allies: ${allyLost}</p> <div id='restart'><h3>Play again?</h3></div>`
+    );
+  };
+
   const loop = () => {
     score();
     energy();
@@ -214,7 +232,7 @@ function start() {
   var bgSound = document.getElementById("bg-aud");
   var rescueSound = document.getElementById("rescue-aud");
   var lostSound = document.getElementById("lost-aud");
-  var gameOverSound = document.getElementById("game-over-aud");
+  var gameoverSound = document.getElementById("game-over-aud");
   var explosionSound = document.getElementById("explosion-aud");
 
   bgSound.addEventListener(
@@ -232,7 +250,7 @@ function start() {
   var totalScore = 0;
   var allySaved = 0;
   var allyLost = 0;
-  var gameOver = false;
+  var isGameOver = false;
   var enemy1Speed = 5;
   var enemy1Height = Math.random() * 334;
   var enemy2Speed = 3;

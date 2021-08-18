@@ -31,7 +31,8 @@ body {
 #game-instructions {
   width: 350px;
   height: 200;
-  background-color: #fff;
+  background-color: #ccc;
+  opacity: 95%;
   margin: auto;
   padding: 10px;
   margin-top: 100px;
@@ -42,7 +43,7 @@ body {
 }
 
 #game-instructions:hover {
-  background-color: #ccc;
+  background-color: #fff;
 }
 
 #game-instructions:active {
@@ -64,6 +65,31 @@ body {
   position: absolute;
   left: 750px;
   top: 7px;
+}
+
+#end {
+  width: 350px;
+  height: 250px;
+  background-color: #ccc;
+  border-radius: 10px;
+  box-shadow: 20px 0px 30px rgba(0, 0, 0, 0.5);
+  opacity: 95%;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 10px;
+}
+
+h3 {
+  font-family: game-font;
+  font-size: 20px;
+  color: #603a03;
+}
+
+h3:hover {
+  cursor: pointer;
+  color: red;
 }
 
 h2 {
