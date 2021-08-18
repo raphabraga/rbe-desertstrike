@@ -202,10 +202,11 @@ function start() {
     $("#enemy1").remove();
     $("#enemy2").remove();
     $("#ally").remove();
+    $("#player-energy").remove();
 
     $("#game-bg").append("<div id='end'></div>");
     $("#end").html(
-      `<h1> Game Over</h1> <p>Your score: ${totalScore}</p> <p>Rescued Allies: ${allySaved}</p> <p>Lost Allies: ${allyLost}</p> <div id='restart'><h3>Play again?</h3></div>`
+      `<h1> Game Over</h1> <p>Your score: ${totalScore}</p> <p>Rescued Allies: ${allySaved}</p> <p>Lost Allies: ${allyLost}</p> <div id='restart'><h3 onClick=restartGame()>Play again?</h3></div>`
     );
   };
 
@@ -257,4 +258,10 @@ function start() {
   var allySpeed = 1;
   var canShoot = true;
   game.timer = setInterval(loop, 30);
+}
+
+function restartGame() {
+  gameoverSound.pause();
+  $("#end").remove();
+  start();
 }
