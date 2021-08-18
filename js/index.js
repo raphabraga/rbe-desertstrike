@@ -6,6 +6,7 @@ function start() {
 
   const shoot = () => {
     if (canShoot) {
+      shootSound.play();
       canShoot = false;
       $("#game-bg").append("<div id='shoot'></div>");
       playerHeight = parseInt($("#player").css("top"));
@@ -90,6 +91,7 @@ function start() {
     var collision6 = $("#enemy2").collision($("#ally"));
 
     if (collision1.length > 0) {
+      explosionSound.play();
       playerEnergy--;
       explosion1Y = $("#enemy1").css("top");
       explosion1X = $("#enemy1").css("left");
@@ -99,6 +101,7 @@ function start() {
     }
 
     if (collision2.length > 0) {
+      explosionSound.play();
       playerEnergy--;
       explosion2Y = $("#enemy2").css("top");
       explosion2X = $("#enemy2").css("left");
@@ -110,6 +113,7 @@ function start() {
     }
 
     if (collision3.length > 0) {
+      explosionSound.play();
       enemy1Speed += 0.3;
       totalScore += 100;
       explosion3Y = $("#enemy1").css("top");
@@ -122,6 +126,7 @@ function start() {
     }
 
     if (collision4.length > 0) {
+      explosionSound.play();
       totalScore += 50;
       explosion4Y = $("#enemy2").css("top");
       explosion4X = $("#enemy2").css("left");
@@ -133,6 +138,7 @@ function start() {
     }
 
     if (collision5.length > 0) {
+      rescueSound.play();
       allySaved++;
       $("#ally").remove();
       setTimeout(() => {
@@ -142,6 +148,7 @@ function start() {
     }
 
     if (collision6.length > 0) {
+      lostSound.play();
       allyLost++;
       deathAllyY = $("#ally").css("top");
       deathAllyX = $("#ally").css("left");
@@ -203,6 +210,22 @@ function start() {
   $("#game-bg").append("<div id='scoreboard'></div>");
   $("#game-bg").append("<div id='player-energy'></div>");
 
+  var shootSound = document.getElementById("shoot-aud");
+  var bgSound = document.getElementById("bg-aud");
+  var rescueSound = document.getElementById("rescue-aud");
+  var lostSound = document.getElementById("lost-aud");
+  var gameOverSound = document.getElementById("game-over-aud");
+  var explosionSound = document.getElementById("explosion-aud");
+
+  bgSound.addEventListener(
+    "ended",
+    () => {
+      bgSound.currentTime = 0;
+      bgSound.play();
+    },
+    false
+  );
+  bgSound.play();
   window.addEventListener("keydown", (event) => movePlayer(event.key));
   var game = {};
   var playerEnergy = 3;
